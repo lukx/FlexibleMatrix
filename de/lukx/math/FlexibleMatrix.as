@@ -1,43 +1,51 @@
-
+/**
+ * FlexibleMatrix
+ * A matrix calculation class for ActionScript 3
+ * 
+ * Original Date:	October 2009
+ * Version: 		1.0, 02 Oct 2010
+ * 
+ * Author:			Lukas Domnick
+ * 					<lukx@lukx.de>
+ *					http://www.lukx.de/code/
+ *
+ * Copyright (c) 2009-2010 Lukas Domnick
+ * Published under a BSD Open Source License
+ * More Info: http://go.lukx.de/lukxbsd/
+ *
+ * This Project is hosted on GitHub: http://github.com/Lukx/FlexibleMatrix
+ *
+ * 
+ * Ported from "Matrix Calculator" 1.6 by Marcus Kazmierczak, http://www.mkaz.com/math/
+ * 
+ * Disclaimer: To be honest, I have no clue what matrix math is about, which is why I in
+ * many parts just ported Marcus' implementation to AS3 and tweaked it until
+ * it worked. Now this is this.
+ * 
+ * You are invited to let me know if you find a way of improving this
+ * class. gitHub or mail me :-)
+ * 
+ * Greetings from Cologne, Germany!
+ * Come by and have a beer with me if you like this class :-)
+ * 
+ * 
+ * Usage Example:
+ * My favorite way to create matrices is the following:
+ * 
+ * var myMtx:FlexibleMatrix = new FlexibleMatrix();
+ * myMtx.appendRow(2,4,6,2,1)
+ * 		.appendRow(5,1,2,1,2)
+ * 		.appendRow(1,5,1,1,1);
+ * 
+ * Results in the following matrix:
+ * 
+ * 		/ 2 4 6 2 1 \
+ * 		| 5 1 2 1 2 |
+ * 		\ 1 5 1 1 1 /
+ * */
 package de.lukx.math
 {
-	/**
-	 * FlexibleMatrix
-	 * 
-	 * October 2009, Lukas Domnick ( lukx@lukx.de )
-	 *
-	 * A class to build and calculate with matrices.
-	 * Basically taken from Matrix Calculator - Java Application Version,
-	 * done in October 1997 by Marcus Kazmierczak, http://www.mkaz.com
-	 * 
-	 * Adapted to AS3 by Lukas Domnick, lukx@lukx.de, October 2009
-	 * 
-	 * Open Source. Do whatever you want with it. If you change, improve or
-	 * enhance this class, please let me know. Maybe it's useful those changes
-	 * are merged into my version as well! 
-	 * 
-	 * Disclaimer: To be honest, I have no clue what matrix math is about, which is why I in
-	 * some parts just ported Marcus' implementation to AS3 and tweaked it until
-	 * it worked. Now this is this.
-	 * 
-	 * Greetings from Cologne, Germany!
-	 * Come by and have a beer with me if you like this class :-)
-	 * 
-	 * 
-	 * Usage Example:
-	 * My favorite way to create matrices is the following:
-	 * 
-	 * var myMtx:FlexibleMatrix = new FlexibleMatrix();
-	 * myMtx.appendRow(2,4,6,2,1)
-	 * 		.appendRow(5,1,2,1,2)
-	 * 		.appendRow(1,5,1,1,1);
-	 * 
-	 * Results in the following matrix:
-	 * 
-	 * 		/ 2 4 6 2 1 \
-	 * 		| 5 1 2 1 2 |
-	 * 		\ 1 5 1 1 1 /
-	 * */
+	
 	 
 	public class FlexibleMatrix
 	{
@@ -52,25 +60,16 @@ package de.lukx.math
 		private const DEBUG:Boolean = false;
 					
 		/**
-		 * Not yet implemented
-		 */		
-		private var actualMatrixIsFixed:Boolean = false;
-		
-		
-		/**
 		 * Creates a new FlexibleMatrix.
 		 * 
 		 * @param int columns
 		 * @param int rows
-		 * @param Boolean is fixed? // not yet implemented!
 		 * */
 		public function FlexibleMatrix( columns:int = 0,
-										rows:int = 0,
-										isFixed:Boolean = false) {
+										rows:int = 0 ) {
 			this.actualMatrixColumns = columns;
 			this.actualMatrixRows = rows;
 
-			this.actualMatrixIsFixed = isFixed;
 				// Weird notation but that's the way 2-dimensional Vectors work:
 			this.actualMatrix = new Vector.<Vector.<Number>>( columns );
 			
